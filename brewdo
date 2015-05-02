@@ -225,6 +225,7 @@ def cmd_brew(*args)
     system([brew_bin, 'brew'], *args)
     return $?.to_i >> 8
   else
+    cmd_do('/usr/bin/umask', '022')
     return cmd_do(brew_bin, *args)
   end
 end
